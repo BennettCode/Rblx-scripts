@@ -4,21 +4,24 @@ local Ui = XanaxUILib:CreateWindow("BennettV1")
 local Info = Ui:CreateSection("Info")
 local ExampleSection = Ui:CreateSection("Player")
 local worldex = Ui:CreateSection('World')
-local tycoon = game:GetService("Workspace").Tycoons.Tycoons.Ice.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Void.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Acid.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Wind.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Laser.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Flame.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Void.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Acid.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Wind.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Laser.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Electric.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Void.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Acid.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Wind.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Laser.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Storm.Essentials.Giver 
-local plyrhead = game:GetService('Players').LocalPlayer.Character.Head
-
-
+local tycoon = {
+    game:GetService("Workspace").Tycoons.Tycoons.Acid.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Void.Essentials.Giver,
+    game:GetService("Workspace").Tycoons.Tycoons.Wind.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Laser.Essentials.Giver,
+    game:GetService("Workspace").Tycoons.Tycoons.Flame.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Electric.Essentials.Giver,
+    game:GetService("Workspace").Tycoons.Tycoons.Storm.Essentials.Giver, game:GetService("Workspace").Tycoons.Tycoons.Ice.Essentials.Giver
+}
 
 local players = game:GetService('Players')
-_G.plyrhead = game:GetService('Players').LocalPlayer.Character.Head
+local plyr = players.LocalPlayer
 
-
-Info:CreateLabel("Made by Bennett#1897")
-Info:CreateLabel("Not My Ui ")
+Info:CreateLabel("Made By Bennett#1897")
+Info:CreateLabel("UI Credits: Xanax UI Library")
+Info:CreateLabel("All Scripts Are Mine")
+Info:CreateLabel("Im Ass At Making UIs")
 Info:CreateButton("Destroy UI", function() XanaxUILib.functions:DestroyGUI() end)
 
 ExampleSection:CreateLabel("Player Exploits")
-ExampleSection:CreateButton("OP Pistol (Cant Hold Out A Pistol)", function()     
+ExampleSection:CreateButton("OP Pistol", function()     
     
     for i,v in pairs(players.LocalPlayer:GetDescendants()) do
     
@@ -43,8 +46,9 @@ m.AmmoPerMag = math.huge
 m.Knockback = math.huge
 m.Recoil = 0 end)
 
-ExampleSection:CreateButton('Give Carpet', function()     for i, v in pairs(game:GetService("Players"):GetDescendants()) do
-    if v.Name == 'GoldenCarpet' and not players.Backpack:FindFirstChild('GoldenCarpet') then
+ExampleSection:CreateButton('Give Carpet', function()     
+    for i, v in pairs(game:GetDescendants()) do
+    if v.Name == 'GoldenCarpet' and not plyr.Backpack:FindFirstChild('GoldenCarpet') then
             carpet = v:Clone()
             carpet.Parent = plyr.Backpack
     end
@@ -76,7 +80,14 @@ worldex:CreateButton('Kill All (Must Hold Out Pistol)', function() for i, v in p
 
   
 worldex:CreateButton('Auto Collector', function() 
-    while true do firetouchinterest(plyrhead, tycoon, 0)
-        wait() 
-        firetouchinterest(plyrhead, tycoon, 1) 
-    end end)
+    
+    while wait() do
+        for i,v in pairs(tycoon) do
+                local plyrhead = game:GetService('Players').LocalPlayer.Character.Head
+                firetouchinterest(plyrhead, v, 0)
+                wait()
+                firetouchinterest(plyrhead, v, 1)
+                end
+        end
+
+end)
