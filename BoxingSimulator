@@ -93,23 +93,17 @@ end
 
 function boss1() 
     spawn(function()
-        local plyr = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
-        for i,v in pairs(game:GetService("Workspace").Boss:GetDescendants()) do      
-            if v.Name == 'Health' then
-                getgenv().health = v
-        end
-            if v.Name == 'HumanoidRootPart' then
-                    while getgenv().boss1 == true do
-                        plyr.CFrame = v.CFrame * CFrame.new(0,0,3 )         
-                 mouse1press()
-                 wait()
-                 if getgenv().health.Value <= 0 or getgenv().boss1 == false  then
-                    plyr.CFrame = CFrame.new(16300.5, 851.329, -35417.7)    
-                    break
+        while getgenv().boss1 == true do
+            local plyr = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
+                for i,v in pairs(game:GetService("Workspace").Boss:GetDescendants()) do
+                if v.Name == 'HumanoidRootPart' then
+                    repeat wait()
+                        plyr.CFrame = v.CFrame * CFrame.new(0, 0, 3)
+                        mouse1press()
+                    until v == nil  or getgenv().boss1 == false
                  end
-                end
+              end
             end
-        end
     end)
 end
 
@@ -219,13 +213,6 @@ b:Toggle("Auto Energy",function(bool)
     end
 end)
 
-b:Toggle("Farm Bunny",function(bool)
-    getgenv().boss1 = bool
-    if bool then
-        boss1()
-    end
-end)
-
 f:Toggle("Pickup Coins",function(bool)
     getgenv().pickupc = bool
     if bool then
@@ -288,6 +275,12 @@ l:Toggle("Auto Farm",function(bool)
     end
 end)
 
+l:Toggle("Farm Bunny Boss",function(bool)
+    getgenv().boss1 = bool
+    if bool then
+        boss1()
+    end
+end)
 
 a:Label("Created By Bennett#1897",{
     TextSize = 17; -- Self Explaining
