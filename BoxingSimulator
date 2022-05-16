@@ -1,9 +1,6 @@
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
 -- vars
 local players = game:GetService('Players')
-local plyrhum = game:GetService('Players').LocalPlayer.Character.Humanoid
-local plyr = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
-
 
 getgenv().pickupc = false
 getgenv().autosell = false
@@ -49,7 +46,8 @@ end
 function worldtp(world)
     spawn(function()
         if game:GetService("Workspace").IslandUnlock[world] then
-        plyr.CFrame = game:GetService("Workspace").IslandUnlock[world].CFrame
+            local plyr = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
+            plyr.CFrame = game:GetService("Workspace").IslandUnlock[world].CFrame
         end
     end)
 end
@@ -72,6 +70,7 @@ function autohatch()
 
 function farm()
     spawn(function() while getgenv().autofarm == true do
+        local plyrhum = game:GetService('Players').LocalPlayer.Character.Humanoid
         local puncht
         wait()
         for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
