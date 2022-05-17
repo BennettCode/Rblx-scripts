@@ -30,7 +30,7 @@ end
 function koth()
     spawn(function()
         repeat 
-    local plyr = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
+            local plyr = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
     task.wait()
     plyr.CFrame = kothj.CFrame * CFrame.new(-2,0,0)
 until getgenv().kothh == false
@@ -195,12 +195,6 @@ b:Toggle("Auto Farm",function(bool)
     end
 end)
 
-b:Toggle('KOTH Farm',function(bool)
-    getgenv().kothh = bool
-    if bool then
-        koth()
-    end
-end)
 
 b:Toggle("Auto Sell",function(bool)
     getgenv().autosell = bool
@@ -220,6 +214,13 @@ b:Toggle("Auto Gloves",function(bool)
     getgenv().autoglove = bool
     if bool then
         glove()
+    end
+end)
+
+b:Toggle('KOTH Farm',function(bool)
+    getgenv().kothh = bool
+    if bool then
+        koth()
     end
 end)
 
