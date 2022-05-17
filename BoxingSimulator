@@ -248,7 +248,7 @@ b:Toggle("Auto Energy",function(bool)
     end
 end)
 
-b:Button("Claim Every Flag",function()
+b:Button("Claim All Flags",function()
     flagcap()
 end)
 
