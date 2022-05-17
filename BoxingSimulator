@@ -146,6 +146,21 @@ function glove()
     end)
 end
 
+
+
+function flagcap()
+    spawn(function()
+    for i,v in pairs(game:GetService("Workspace").Flags:GetDescendants()) do
+    local plyr = game:GetService('Players').LocalPlayer.Character.HumanoidRootPart
+    if v.name == 'Root' then
+        plyr.CFrame = v.CFrame
+        wait(9)
+    end
+end 
+    end)
+end
+
+
 function pickupe()
     spawn(function()
         while getgenv().pickupe == true and task.wait() do 
@@ -217,6 +232,8 @@ b:Toggle("Auto Gloves",function(bool)
     end
 end)
 
+
+
 b:Toggle('KOTH Farm',function(bool)
     getgenv().kothh = bool
     if bool then
@@ -229,6 +246,10 @@ b:Toggle("Auto Energy",function(bool)
     if bool then
         energy()
     end
+end)
+
+b:Button("Claim Every Flag",function()
+    flagcap()
 end)
 
 f:Toggle("Pickup Coins",function(bool)
