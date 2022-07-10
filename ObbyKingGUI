@@ -7,7 +7,7 @@ local UICorner = Instance.new("UICorner")
 --Properties:
 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
+ScreenGui.ResetOnSpawn = false
 TextButton.Parent = ScreenGui
 TextButton.BackgroundColor3 = Color3.fromRGB(62, 62, 62)
 TextButton.Position = UDim2.new(0.916007876, 0, 0.455045819, 0)
@@ -32,7 +32,7 @@ local function RTDF_fake_script() -- TextButton.LocalScript
 		local head = game.Players.LocalPlayer.Character.Head
 	
 		local tween1 = game:GetService('TweenService')
-		local tweeninfo = TweenInfo.new(2,Enum.EasingStyle.Linear)
+		local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
 	
 		for i,v in pairs(game:GetService("Workspace").Map:GetDescendants()) do
 			if v.Name == 'Point' then
