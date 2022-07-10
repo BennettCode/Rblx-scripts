@@ -1,0 +1,65 @@
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local TextButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+TextButton.Parent = ScreenGui
+TextButton.BackgroundColor3 = Color3.fromRGB(62, 62, 62)
+TextButton.Position = UDim2.new(0.916007876, 0, 0.455045819, 0)
+TextButton.Size = UDim2.new(0, 67, 0, 49)
+TextButton.Font = Enum.Font.Oswald
+TextButton.Text = "Skip Stage"
+TextButton.TextColor3 = Color3.fromRGB(170, 85, 255)
+TextButton.TextSize = 21.000
+
+UICorner.Parent = TextButton
+
+-- Scripts:
+
+local function RTDF_fake_script() -- TextButton.LocalScript 
+	local script = Instance.new('LocalScript', TextButton)
+
+    local button = script.Parent
+
+	button.MouseButton1Click:Connect(function()
+		local plyrhum = game.Players.LocalPlayer.Character.HumanoidRootPart
+		local plyr = game.Players.LocalPlayer
+		local head = game.Players.LocalPlayer.Character.Head
+	
+		local tween1 = game:GetService('TweenService')
+		local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+	
+		for i,v in pairs(game:GetService("Workspace").Map:GetDescendants()) do
+			if v.Name == 'Point' then
+				firetouchinterest(head, v, 0)
+				wait()
+				firetouchinterest(head, v, 1)
+			end
+		end
+	
+		for i,v in pairs(game:GetService("Workspace").Map:GetDescendants()) do
+			if v.Name == 'Crown' then
+				location = v.Position
+			end
+		end
+	
+	
+		function test()
+			if plyr.Character and plyr.Character:FindFirstChild('HumanoidRootPart') then
+				local cf = CFrame.new(location)
+				local a = tween1:Create(plyr.Character.HumanoidRootPart, tweeninfo, {CFrame = cf})
+				wait(1)
+				a:Play()          
+				a.Completed:Wait()
+			end
+		end
+	
+		test()
+	end)
+end
+coroutine.wrap(RTDF_fake_script)()
