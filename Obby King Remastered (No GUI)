@@ -1,0 +1,32 @@
+local plyrhum = game.Players.LocalPlayer.Character.HumanoidRootPart
+local plyr = game.Players.LocalPlayer
+local head = game.Players.LocalPlayer.Character.Head
+
+local tween1 = game:GetService('TweenService')
+local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+
+for i,v in pairs(game:GetService("Workspace").Map:GetDescendants()) do
+    if v.Name == 'Point' then
+        firetouchinterest(head, v, 0)
+        wait()
+        firetouchinterest(head, v, 1)
+    end
+end
+
+for i,v in pairs(game:GetService("Workspace").Map:GetDescendants()) do
+    if v.Name == 'Crown' then
+        location = v.Position
+    end
+end
+
+function test()
+if plyr.Character and plyr.Character:FindFirstChild('HumanoidRootPart') then
+    local cf = CFrame.new(location)
+    local a = tween1:Create(plyr.Character.HumanoidRootPart, tweeninfo, {CFrame = cf})
+    wait(1)
+    a:Play()          
+    a.Completed:Wait()
+end
+end
+
+test()
