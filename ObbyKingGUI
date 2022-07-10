@@ -32,7 +32,7 @@ local function RTDF_fake_script() -- TextButton.LocalScript
 		local head = game.Players.LocalPlayer.Character.Head
 	
 		local tween1 = game:GetService('TweenService')
-		local tweeninfo = TweenInfo.new(1,Enum.EasingStyle.Linear)
+		local tweeninfo = TweenInfo.new(2,Enum.EasingStyle.Linear)
 	
 		for i,v in pairs(game:GetService("Workspace").Map:GetDescendants()) do
 			if v.Name == 'Point' then
