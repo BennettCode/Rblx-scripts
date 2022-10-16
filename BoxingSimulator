@@ -259,7 +259,7 @@ f:Toggle("Pickup Coins",function(bool)
     end
 end)
 
-f:Toggle("Pickup Eggs",function(bool)
+f:Toggle("Pickup Doge Coins",function(bool)
     getgenv().pickupe = bool
     if bool then
         pickupe()
@@ -273,7 +273,7 @@ f:Toggle("Pickup Trophies",function(bool)
     end
 end)
 
-k:Dropdown("Select Egg",{"basic","uncommon","rare", "epic", "legendary", "mythical", "divine", "arcane", "mystic","celestial", "supreme", "impostor", "infinity", "magma", "easter" },true,function(value) 
+k:Dropdown("Select Egg",{"basic","uncommon","rare", "epic", "legendary", "mythical", "divine", "arcane", "mystic","celestial", "supreme", "impostor", "infinity", "magma", "easter", "godly", "meme", "bakugan", "halloween"},true,function(value) 
     hatcharg = {
         [1] = value,
         [2] = false
@@ -314,7 +314,7 @@ l:Toggle("Auto Farm",function(bool)
     end
 end)
 
-l:Toggle("Farm Bunny Boss",function(bool)
+l:Toggle("Farm Boss",function(bool)
     getgenv().boss1 = bool
     if bool then
         boss1()
